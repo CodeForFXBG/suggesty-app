@@ -43,7 +43,7 @@ angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services'
     views: {
       'tab-submit': {
         templateUrl: 'templates/tab-submit.html',
-        controller: 'SuggestionCtrl'
+        controller: 'SuggestionSubmitCtrl'
       }
     }
   })
@@ -57,12 +57,12 @@ angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services'
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.suggestion-detail', {
+      url: '/suggestion/:id',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-suggestions': {
+          templateUrl: 'templates/suggestion-detail.html',
+          controller: 'SuggestionDetailsCtrl'
         }
       }
     })

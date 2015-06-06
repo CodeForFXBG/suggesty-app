@@ -1,15 +1,27 @@
 angular.module('suggesty.services', [])
-.factory('Suggestions', function($http){
+.factory('Suggestions', function($http, $filter){
+  var suggestions = [
+        {id:0,severity:'high',text:'Please fix pothole', location:'Fredericksburg, VA'},
+        {id:1,severity:'low',text:'Trim that tree',location:'Washington, D.C'}
+      ]
   return {
     submit: function(suggestion){
-      console.log(suggestion)
-      return $http.post('/suggestion', suggestion)
+      suggestion.id = suggestions.length
+      suggestion.severity = 'low'
+      suggestion.location = 'anywhere, USA'
+      suggestions.push(suggestion)
+      return $http.post('http://www.suggesty.org/suggestions', suggestion)
     },
     all : function(){
-      return [
-        {id:'0',severity:'high',text:'Please fix pothole', location:'Fredericksburg, VA'},
-        {id:'1',severity:'low',text:'Trim that tree',location:'Washington, D.C'}
-      ]
+      return suggestions
+    },
+    get : function(id){
+      for (var i = 0; i < suggestions.length; i++) {
+        if (suggestions[i].id === parseInt(id)) {
+          return suggestions[i];
+        }
+      }
+      return null;
     }
   }
 })

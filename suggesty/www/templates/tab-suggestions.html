@@ -1,7 +1,7 @@
 <ion-view view-title="Suggestions">
   <ion-content>
     <ion-list>
-      <ion-item class="item-avatar item-icon-right" ng-repeat="suggestion in suggestions" type="item-text-wrap" href="#/tab/suggestion/{{suggestion.id}}">
+      <ion-item class="item-avatar item-icon-right" ng-repeat="suggestion in suggestions track by $index" type="item-text-wrap" href="#/tab/suggestion/{{suggestion.id}}">
         <img ng-src="{{suggestion.severity}}">
         <p>{{suggestion.text}}</p>
       </ion-item>
