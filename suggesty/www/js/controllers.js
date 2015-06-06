@@ -1,10 +1,18 @@
 angular.module('suggesty.controllers', [])
-
-.controller('SuggestionCtrl', function($scope, Suggestions) {
+.controller('SuggestionSubmitCtrl', function($scope, $state, Suggestions) {
   $scope.suggest = function(suggestion){
-    Suggestions.submit(suggestion)
+    Suggestions.submit(JSON.parse(JSON.stringify(suggestion)))
+    suggestion.text = ""
+    suggestion.id = ""
+    suggestion.severity = ""
+    $state.go('tab.suggestions')
   }
+})
+.controller('SuggestionCtrl', function($scope, $state, Suggestions) {
   $scope.suggestions = Suggestions.all()
+})
+.controller('SuggestionDetailsCtrl', function($scope, $stateParams, Suggestions){
+  $scope.suggestion = Suggestions.get($stateParams.id)
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {
