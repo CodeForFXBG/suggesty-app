@@ -1,4 +1,4 @@
 # suggesty-app
 The app!
 
-Coming to a phone near you.
+Coming to a phone near you!
