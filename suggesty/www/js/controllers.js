@@ -1,18 +1,24 @@
 angular.module('suggesty.controllers', [])
 .controller('SuggestionSubmitCtrl', function($scope, $state, Suggestions) {
   $scope.suggest = function(suggestion){
-    Suggestions.submit(JSON.parse(JSON.stringify(suggestion)))
-    suggestion.text = ""
-    suggestion.id = ""
-    suggestion.severity = ""
-    $state.go('tab.suggestions')
+    Suggestions.submit(JSON.parse(JSON.stringify(suggestion))).success(function(){
+      $state.go('tab.suggestions')
+    })
   }
 })
 .controller('SuggestionCtrl', function($scope, $state, Suggestions) {
-  $scope.suggestions = Suggestions.all()
+  $scope.$on('$ionicView.enter', function(e) {
+    Suggestions.all().success(function(data){
+      $scope.suggestions = data
+    })
+  })
 })
 .controller('SuggestionDetailsCtrl', function($scope, $stateParams, Suggestions){
-  $scope.suggestion = Suggestions.get($stateParams.id)
+  $scope.$on('$ionicView.enter', function(e) {
+    Suggestions.get($stateParams.id).success(function(data){
+      $scope.suggestion = data
+    })
+  })
 })
 
 .controller('ChatsCtrl', function($scope, Chats) {

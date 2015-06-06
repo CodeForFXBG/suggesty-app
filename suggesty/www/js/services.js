@@ -1,27 +1,44 @@
 angular.module('suggesty.services', [])
 .factory('Suggestions', function($http, $filter){
-  var suggestions = [
-        {id:0,severity:'high',text:'Please fix pothole', location:'Fredericksburg, VA'},
-        {id:1,severity:'low',text:'Trim that tree',location:'Washington, D.C'}
-      ]
+  var url = 'http://suggesty.org'
+  // var suggestions = [
+  //       {
+  //         id:0,
+  //         type:'traffic',
+  //         text:'Please fix pothole',
+  //         location:'Fredericksburg, VA'
+  //       },
+  //       {
+  //         id:1,
+  //         type:'landscaping',
+  //         text:'Trim that tree',
+  //         location:'Washington, D.C'
+  //       },
+  //       {
+  //         id:2,
+  //         type:'maintenance',
+  //         text:'Fix the window',
+  //         location:'Washington, D.C'
+  //       },
+  //       {
+  //         id:3,
+  //         type:'trash',
+  //         text:'This place is dirty',
+  //         location:'Detroit, MI'
+  //       }
+  //     ]
   return {
     submit: function(suggestion){
-      suggestion.id = suggestions.length
-      suggestion.severity = 'low'
-      suggestion.location = 'anywhere, USA'
-      suggestions.push(suggestion)
-      return $http.post('http://www.suggesty.org/suggestions', suggestion)
+      suggestion.type='Traffic'
+      suggestion.latitude=38.3018
+      suggestion.longitude=77.4708
+      return $http.post(url + '/suggestions', suggestion)
     },
     all : function(){
-      return suggestions
+      return $http.get(url + '/suggestions')
     },
     get : function(id){
-      for (var i = 0; i < suggestions.length; i++) {
-        if (suggestions[i].id === parseInt(id)) {
-          return suggestions[i];
-        }
-      }
-      return null;
+      return $http.get(url + '/suggestions/' + id)
     }
   }
 })
