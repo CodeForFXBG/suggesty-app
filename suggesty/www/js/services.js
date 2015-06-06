@@ -3,8 +3,6 @@ angular.module('suggesty.services', [])
   var url = 'http://suggesty.org';
   return {
     submit: function(suggestion){
-      suggestion.type='Traffic';
-
       var posOptions = {timeout: 10000, enableHighAccuracy: false};
       return $cordovaGeolocation
         .getCurrentPosition(posOptions)
