@@ -1,6 +1,6 @@
 angular.module('suggesty.controllers', [])
 
-.controller('SubmitCtrl', function($scope, Suggestions) {
+.controller('SuggestionCtrl', function($scope, Suggestions) {
   $scope.suggest = function(suggestion){
     Suggestions.submit(suggestion)
   }

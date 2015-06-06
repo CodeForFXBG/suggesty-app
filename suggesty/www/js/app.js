@@ -43,7 +43,7 @@ angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services'
     views: {
       'tab-submit': {
         templateUrl: 'templates/tab-submit.html',
-        controller: 'SubmitCtrl'
+        controller: 'SuggestionCtrl'
       }
     }
   })
@@ -53,7 +53,7 @@ angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services'
       views: {
         'tab-suggestions': {
           templateUrl: 'templates/tab-suggestions.html',
-          controller: 'SubmitCtrl'
+          controller: 'SuggestionCtrl'
         }
       }
     })
