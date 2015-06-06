@@ -37,7 +37,7 @@ Coming to a phone near you!
 ### Running the server
 
 ```bash
-$ cd /vagrant
+$ cd /vagrant/suggesty
 $ ionic serve
 ```
 
