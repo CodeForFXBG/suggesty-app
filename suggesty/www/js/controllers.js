@@ -9,15 +9,16 @@ angular.module('suggesty.controllers', [])
 })
 .controller('SuggestionCtrl', function($scope, $state, Suggestions) {
   $scope.$on('$ionicView.enter', function(e) {
-    Suggestions.all().then(function(data){
-      $scope.suggestions = data
+    Suggestions.all().then(function(res){
+      console.log('that DATA', res.data);
+      $scope.suggestions = res.data
     })
   })
 })
 .controller('SuggestionDetailsCtrl', function($scope, $stateParams, Suggestions){
   $scope.$on('$ionicView.enter', function(e) {
-    Suggestions.get($stateParams.id).then(function(data){
-      $scope.suggestion = data
+    Suggestions.get($stateParams.id).then(function(res){
+      $scope.suggestion = res.data
     })
   })
 })
