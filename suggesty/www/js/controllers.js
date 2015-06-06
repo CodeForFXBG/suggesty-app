@@ -10,7 +10,6 @@ angular.module('suggesty.controllers', [])
 .controller('SuggestionCtrl', function($scope, $state, Suggestions) {
   $scope.$on('$ionicView.enter', function(e) {
     Suggestions.all().then(function(res){
-      console.log('that DATA', res.data);
       $scope.suggestions = res.data
     })
   })
