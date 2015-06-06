@@ -1,38 +1,23 @@
 angular.module('suggesty.services', [])
-.factory('Suggestions', function($http, $filter){
-  var url = 'http://suggesty.org'
-  // var suggestions = [
-  //       {
-  //         id:0,
-  //         type:'traffic',
-  //         text:'Please fix pothole',
-  //         location:'Fredericksburg, VA'
-  //       },
-  //       {
-  //         id:1,
-  //         type:'landscaping',
-  //         text:'Trim that tree',
-  //         location:'Washington, D.C'
-  //       },
-  //       {
-  //         id:2,
-  //         type:'maintenance',
-  //         text:'Fix the window',
-  //         location:'Washington, D.C'
-  //       },
-  //       {
-  //         id:3,
-  //         type:'trash',
-  //         text:'This place is dirty',
-  //         location:'Detroit, MI'
-  //       }
-  //     ]
+.factory('Suggestions', function($http, $cordovaGeolocation){
+  var url = 'http://suggesty.org';
   return {
     submit: function(suggestion){
-      suggestion.type='Traffic'
-      suggestion.latitude=38.3018
-      suggestion.longitude=77.4708
-      return $http.post(url + '/suggestions', suggestion)
+      suggestion.type='Traffic';
+
+      var posOptions = {timeout: 10000, enableHighAccuracy: false};
+      return $cordovaGeolocation
+        .getCurrentPosition(posOptions)
+        .then(function (position) {
+          suggestion.latitude= position.coords.latitude;
+          suggestion.longitude= position.coords.longitude;
+
+          return $http.post(url + '/suggestions', suggestion);
+        }, function(err) {
+          // error
+          console.log(err, 'could not get location');
+          return $http.post(url + '/suggestions', suggestion);
+        });
     },
     all : function(){
       return $http.get(url + '/suggestions')
