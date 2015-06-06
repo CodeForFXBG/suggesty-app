@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services' ,'ngCordova'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, Location) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -18,6 +18,8 @@ angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services'
       // org.apache.cordova.statusbar required
       StatusBar.styleLightContent();
     }
+
+    Location.getLocation();
   });
 })
 
