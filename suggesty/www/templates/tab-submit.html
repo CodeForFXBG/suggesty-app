@@ -1,0 +1,13 @@
+<ion-view view-title="Submit">
+  <ion-content class="padding">
+    <div class="item item-body">
+    <div>
+      <form ng-submit="suggest(suggestion)">
+        <label class="item item-input">
+          <input type="text" placeholder="Improve your community by making a suggestion!" ng-model="suggestion.text">
+        </label>
+        <button type="submit" class="button button-block button-positive">Suggest</button> 
+      </form>
+    </div>
+  </ion-content>
+</ion-view>

@@ -1,6 +1,11 @@
-angular.module('starter.controllers', [])
+angular.module('suggesty.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('SubmitCtrl', function($scope, Suggestions) {
+  $scope.suggest = function(suggestion){
+    Suggestions.submit(suggestion)
+  }
+  $scope.suggestions = Suggestions.all()
+})
 
 .controller('ChatsCtrl', function($scope, Chats) {
   // With the new view caching in Ionic, Controllers are only called

@@ -1,5 +1,18 @@
-angular.module('starter.services', [])
-
+angular.module('suggesty.services', [])
+.factory('Suggestions', function($http){
+  return {
+    submit: function(suggestion){
+      console.log(suggestion)
+      return $http.post('/suggestion', suggestion)
+    },
+    all : function(){
+      return [
+        {id:'0',severity:'high',text:'Please fix pothole', location:'Fredericksburg, VA'},
+        {id:'1',severity:'low',text:'Trim that tree',location:'Washington, D.C'}
+      ]
+    }
+  }
+})
 .factory('Chats', function() {
   // Might use a resource here that returns a JSON array
 
