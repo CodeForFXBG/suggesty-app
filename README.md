@@ -32,6 +32,13 @@ sudo /home/vagrant/android-sdk-linux/platform-tools/adb kill-server
 sudo /home/vagrant/android-sdk-linux/platform-tools/adb start-server
 ```
 
-<<<<<<< HEAD
 Coming to a phone near you!
-edit test
+
+### Running the server
+
+```bash
+$ cd /vagrant
+$ ionic serve
+```
+
+The app will be available on `http://localhost:8100/` in the host env.
