@@ -19,19 +19,19 @@ angular.module('suggesty.services', [])
     var url = 'http://suggesty.org';
     return {
       submit: function(suggestion){
-          var coords = LocalStorage.getObject('latLonLocation');
-          suggestion.latitude = coords.latitude || null;
-          suggestion.longitude = coords.longitude || null;
-          suggestion.location = LocalStorage.get('fineLocation', "Unknown");
-            return $http.post(url + '/suggestions', suggestion);
+        var coords = LocalStorage.getObject('latLonLocation');
+        suggestion.latitude = coords.latitude || null;
+        suggestion.longitude = coords.longitude || null;
+        suggestion.location = LocalStorage.get('fineLocation', "Unknown");
+        return $http.post(url + '/suggestions', suggestion);
       },
       all : function(){
         return $http.get(url + '/suggestions')
       },
       get : function(id){
         return $http.get(url + '/suggestions/' + id)
-        }
       }
+    }
   })
   .factory('Location', function($cordovaGeolocation, LocalStorage){
     var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -50,15 +50,15 @@ angular.module('suggesty.services', [])
                   LocalStorage.setObject('fineLocation', res[0]);
                 } else {
                   console.log('no matching address');
-    }
+                }
               } else {
                 console.log('cound not reerse lookup');
-  }
+              }
             });
           }, function (err) {
             // error
             console.log(err, 'could not get location');
-});
+          });
       }
     }
   })
