@@ -1,5 +1,6 @@
 angular.module('suggesty.controllers', [])
 .controller('SuggestionSubmitCtrl', function($scope, $state, Suggestions) {
+  $scope.types = ['Traffic', 'Litter', 'Maintenance', 'Landscaping']
   $scope.suggest = function(suggestion){
     Suggestions.submit(JSON.parse(JSON.stringify(suggestion))).then(function(){
       $state.go('tab.suggestions')
