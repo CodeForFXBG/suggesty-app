@@ -22,7 +22,7 @@ angular.module('suggesty.services', [])
         var coords = LocalStorage.getObject('latLonLocation');
         suggestion.latitude = coords.latitude || 0.0;
         suggestion.longitude = coords.longitude || 0.0;
-        suggestion.location = LocalStorage.get('fineLocation', "Unknown");
+        //suggestion.location = LocalStorage.get('fineLocation', "Unknown");
         return $http.post(url + '/suggestions', suggestion);
       },
       all : function(){
