@@ -35,5 +35,3 @@ sudo /home/vagrant/android-sdk-linux/platform-tools/adb start-server
 <<<<<<< HEAD
 Coming to a phone near you!
 edit test
-=======
->>>>>>> d5995918ff7f097c1bd44f9193dadedb0a4f6e78
