@@ -1,1 +1,16 @@
 /* Empty. Add your own CSS if you like */
+img.typelarge{
+  height: 64px;
+  width: 64px;
+}
+img.typesmall{
+  height: 32px;
+  width: 32px;
+}
+.typeoption .item-content span, .typeoption .item-content img{
+  vertical-align: middle;
+  display:inline-block;
+}
+.typeoption .item-content img{
+  padding-right: 10px;
+}

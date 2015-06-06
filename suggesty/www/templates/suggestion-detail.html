@@ -1,8 +1,14 @@
 <ion-view view-title="Suggestion Details">
   <ion-content class="padding">
-    <img ng-src="/img/type_{{suggestion.type.toLowerCase()}}.png" style="width: 64px; height: 64px">
+    <img class="typelarge" ng-src="/img/type_{{suggestion.type.toLowerCase()}}.png">
     <p>
       {{suggestion.description}}
+    </p>
+    <p>
+      {{suggestion.latitude}},  {{suggestion.longitude}}
+    </p>
+    <p>
+      {{suggestion.createdAt}}
     </p>
   </ion-content>
 </ion-view>

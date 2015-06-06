@@ -65,17 +65,7 @@ angular.module('suggesty', ['ionic', 'suggesty.controllers', 'suggesty.services'
           controller: 'SuggestionDetailsCtrl'
         }
       }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+    });
 
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/tab/submit');
